@@ -15,12 +15,12 @@ static const float P = 0.5;
 int main(int argc, char** argv) {
     boost::minstd_rand gen;
 
-#pragma omp parallel for schedule(dynamic,1)
+#pragma omp parallel for schedule(dynamic, 1)
     for (int n = 10; n < 500; ++n) {
         Graph G(ERGen(gen, n, P), ERGen(), 100);
         int omega = boost::bron_kerbosch_clique_number(G);
-        std::cout << "Clique number of graph G(" << n << ", " << P
-                  << "): " << omega << std::endl;
+#pragma omp critical
+        { std::cout << n << ';' << omega << std::endl; }
     }
 
     return 0;
