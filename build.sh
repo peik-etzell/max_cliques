@@ -1,4 +1,5 @@
 #!/bin/bash
 
-cmake -S . -B build || exit | tee build.log
-cmake --build build || exit | tee build.log
+BUILD_DIR="./build"
+cmake -S . -B $BUILD_DIR
+cmake --build $BUILD_DIR
