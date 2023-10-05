@@ -1,11 +1,9 @@
+import math
 import numpy as np
 import matplotlib.pyplot as plt
-import math
 
-CSVFILE = './out.csv'
-
-
-data = np.genfromtxt(CSVFILE, delimiter=';')
+data = np.genfromtxt(fname='out.tsv', delimiter='\t')
+data = np.sort(data, axis=0)
 x, y = zip(*data)
 plt.plot(x, y, label='Real data')
 plt.legend()
@@ -16,7 +14,7 @@ def k_theoretical(n: float):
 
 
 k_v = np.vectorize(k_theoretical)
-x_prime = np.linspace(3, max(x), 10000)
+x_prime = np.linspace(2, max(x), 10000)
 y_prime = k_v(x_prime)
 plt.plot(x_prime, y_prime, label='Theoretical')
 plt.legend()

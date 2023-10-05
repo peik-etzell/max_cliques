@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./build.sh Release
-./Release/max_clique | tee out.csv
+./build.sh
+./build/max_clique | tee out.tsv
