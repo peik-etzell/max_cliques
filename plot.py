@@ -19,4 +19,8 @@ y_prime = k_v(x_prime)
 plt.plot(x_prime, y_prime, label='Theoretical')
 plt.legend()
 
+plt.xlabel('Number of vertices')
+plt.ylabel('Size of maximum clique')
+
+plt.savefig('plot.png')
 plt.show()
